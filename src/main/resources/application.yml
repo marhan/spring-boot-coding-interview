@@ -1,0 +1,46 @@
+############################################################################
+#                               Server
+############################################################################
+
+server:
+  port: 8081
+  shutdown: graceful
+
+############################################################################
+#                               Info
+############################################################################
+info:
+  application:
+    name: "Coding interview"
+    description: "Spring Boot application for coding interviews"
+    version: "0.0.1-SNAPSHOT"
+
+############################################################################
+#                               OpenApi
+############################################################################
+
+open-api-doc:
+  application:
+    name: ${info.application.name}
+    description: ${info.application.description}
+    version: ${info.application.version}
+    port: ${server.port}
+
+############################################################################
+#                               Management
+############################################################################
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
